@@ -13,15 +13,10 @@
     position: relative; /* Necesario para el posicionamiento del footer */
   }
   
- 
- 
-  
-  
-  
   /* Main Section */
   main {
     text-align: center;
-    margin-top: 20px;
+    margin-top: -200px;
   }
   
   h2 {
@@ -36,10 +31,11 @@
     display: flex;
     justify-content: center; /* Centramos los botones */
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
     width: 80%;
     max-width: 900px;
     margin: 20px 0;
+    margin-left: 90px;
   }
   
   .menu-options button {
@@ -96,6 +92,7 @@
   
   /* General Styles */
   body {
+    display: flex;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
