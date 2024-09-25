@@ -7,12 +7,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { RegistroDatosComponent } from "./registro-datos/registro-datos.component";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
+import { AdminComponent } from "./admin/admin.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, RegistroDatosComponent, LoadingSpinnerComponent],
+  imports: [RouterOutlet, LoginComponent, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, RegistroDatosComponent, LoadingSpinnerComponent, AdminComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -13,32 +13,10 @@
     position: relative; /* Necesario para el posicionamiento del footer */
   }
   
-  /* Header */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px 40px;
-    background-color: rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    margin: 0; /* Aseguramos que no haya margen superior */
-    padding: 0;
-}
+ 
+ 
   
-  .header-left img {
-    height: 150px;
-  }
   
-  .header-right h4 {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    margin-right: 400px; /* Eliminamos márgenes */
-  }
   
   /* Main Section */
   main {
