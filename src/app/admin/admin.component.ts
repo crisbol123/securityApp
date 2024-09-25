@@ -14,8 +14,11 @@ export class AdminComponent {
 constructor(private router : Router){
  
 }
-
   registrar(){
     this.router.navigate(['/app-registro-datos']);
   }
+  gotoEliminarDatos(): void{
+    this.router.navigate(['/eliminar-usuarios']);
+  }
 }
+
