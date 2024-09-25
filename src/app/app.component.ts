@@ -8,15 +8,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { RegistroDatosComponent } from "./registro-datos/registro-datos.component";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import { AdminComponent } from "./admin/admin.component";
-
+import { EliminarUsuariosComponent } from './eliminar-usuarios/eliminar-usuarios.component';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, RegistroDatosComponent, LoadingSpinnerComponent, AdminComponent],
+  imports: [RouterOutlet, LoginComponent, MatCardModule, MatFormFieldModule, MatInputModule, EliminarUsuariosComponent ,MatButtonModule, RegistroDatosComponent, LoadingSpinnerComponent, AdminComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'angular';
+  constructor(private router: Router) {}
+
+  onHeaderClick(): void {
+    this.router.navigate(['/admin-interfaz']);
+  }
 }
