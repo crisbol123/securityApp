@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.formSubmitted = true;
+    this.router.navigate(['/admin-interfaz']);
 
-    console.log(this.loginForm);
   }
 
   hasErrors(controlName: string, errorName: string): boolean {
