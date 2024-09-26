@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { LoadingSpinnerComponent } from "../loading-spinner/loading-spinner.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-datos',
@@ -20,7 +21,7 @@ export class RegistroDatosComponent implements OnInit {
   huellaRegistrada: boolean = false;
   tomandoHuella: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router:Router) {}
 
   ngOnInit(): void {
     this.registroForm = this.fb.group({
@@ -41,5 +42,7 @@ export class RegistroDatosComponent implements OnInit {
   hasErrors(controlName: string, errorName: string): boolean {
     return this.registroForm.controls[controlName].hasError(errorName);
   }
+  regresar(): void {
+    this.router.navigate(['/admin-interfaz']);
   
-}
+}}

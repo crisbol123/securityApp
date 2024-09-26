@@ -20,5 +20,8 @@ constructor(private router : Router){
   gotoEliminarDatos(){
     this.router.navigate(['/app-eliminar-usuarios']);
   }
+  regresar(){
+    this.router.navigate(['/']);
+  }
 }
 
