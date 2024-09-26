@@ -21,3 +21,8 @@
   .wider-elements {
     width: 460px; /* Ajusta este valor según sea necesario */
   }
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye los botones con espacio entre ellos */
+    margin-top: 20px; /* Añade un margen superior para separar los botones del contenido anterior */
+  }

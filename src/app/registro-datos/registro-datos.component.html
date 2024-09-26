@@ -41,9 +41,15 @@
       </div>
 
       <div>
-        <button mat-raised-button color="primary" type="button" (click)="onRegistrarHuella()">
-          Agregar Huella
-        </button>
+     
+        <div class="button-container">
+          <button mat-raised-button color="primary" type="button" (click)="onRegistrarHuella()">
+            Agregar Huella
+          </button>
+          <button mat-raised-button color="primary" type="button" (click)="regresar()">
+            Regresar
+          </button>
+        </div>
         <div *ngIf="tomandoHuella" class="huella-animacion">
           <app-loading-spinner></app-loading-spinner>
         </div>
