@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-title>Gestión de Usuarios</mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element" [ngClass]="{'selected': selectedUsuario === element}" (click)="selectUsuario(element)">
+            {{element.id}}
+          </td>
+        </ng-container>
+  
+        <!-- Nombre Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element" [ngClass]="{'selected': selectedUsuario === element}" (click)="selectUsuario(element)">
+            {{element.nombre}}
+          </td>
+        </ng-container>
+  
+        <!-- Cedula Column -->
+        <ng-container matColumnDef="cedula">
+          <th mat-header-cell *matHeaderCellDef> Cédula </th>
+          <td mat-cell *matCellDef="let element" [ngClass]="{'selected': selectedUsuario === element}" (click)="selectUsuario(element)">
+            {{element.cedula}}
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  
+    <mat-card-content>
+      <form [formGroup]="usuarioForm">
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" />
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Cédula</mat-label>
+          <input matInput formControlName="cedula" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="actualizarUsuario()" [disabled]="!usuarioForm.valid || !selectedUsuario">Actualizar</button>
+      <button mat-raised-button color="warn" (click)="eliminarUsuario()" [disabled]="!selectedUsuario">Eliminar</button>
+      <button mat-raised-button color="accent" (click)="crearUsuario()" [disabled]=" selectedUsuario">Crear</button>
+      <button mat-raised-button (click)="limpiarFormulario()">Limpiar</button>
+    </mat-card-actions>
+  </mat-card>
+  
