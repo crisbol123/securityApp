@@ -17,8 +17,8 @@ constructor(private router : Router){
   registrar(){
     this.router.navigate(['/app-registro-datos']);
   }
-  gotoEliminarDatos(){
-    this.router.navigate(['/app-eliminar-usuarios']);
+  gestionar(){
+    this.router.navigate(['/gestion-usuario']);
   }
   regresar(){
     this.router.navigate(['/']);
