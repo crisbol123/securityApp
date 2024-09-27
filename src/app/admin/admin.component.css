@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    background: linear-gradient(135deg, rgba(40, 24, 255, 0.612), #f71e1e);
     color: white;
     font-family: 'Roboto', sans-serif;
     padding: 0; /* Eliminamos el espacio superior */
@@ -39,7 +39,7 @@
   }
   
   .menu-options button {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Degradado moderno */
+    background: linear-gradient(135deg, rgb(74, 61, 255), rgb(255, 0, 0)); /* Degradado moderno */
     color: #ffffff;
     border: none;
     padding: 15px 30px; /* Ajustamos el padding */
