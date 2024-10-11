@@ -1,0 +1,31 @@
+<div class="chat-container">
+  <div class="chat-header">
+    Chat de Ayuda
+  </div>
+  <div class="chat-history">
+    <!-- Verificamos si conversationHistory tiene datos -->
+    <div *ngFor="let message of conversationHistory">
+      <div [ngClass]="{'bot-message': message.sender === 'bot', 'user-message': message.sender === 'user'}">
+        <p>{{ message.message }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Verificamos si currentStep y currentStep.options existen -->
+  <div *ngIf="currentStep && currentStep.options && currentStep.options.length > 0" class="chat-options">
+    <p><strong>{{ currentStep?.message }}</strong></p>
+    <ul>
+      <li *ngFor="let option of currentStep.options">
+        <button (click)="selectOption(option)">{{ option.text }}</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Verificamos si currentStep no es null antes de mostrar el mensaje final -->
+  <div *ngIf="currentStep && (!currentStep.options || currentStep.options.length === 0)" class="chat-end">
+    <p><strong>{{ currentStep?.message }}</strong></p>
+    <button (click)="resetChat()">Iniciar nueva conversación</button>
+  </div>
+</div>
+
+  

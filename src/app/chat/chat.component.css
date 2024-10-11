@@ -1,0 +1,65 @@
+.chat-container {
+    position: fixed;           /* Posicionamos el chat en una posición fija */
+    bottom: 20px;              /* A 20px del borde inferior de la pantalla */
+    right: 20px;               /* A 20px del borde derecho de la pantalla */
+    width: 300px;              /* Ancho del recuadro */
+    height: 400px;             /* Altura del recuadro */
+    border: 1px solid #ccc;    /* Borde alrededor del recuadro */
+    background-color: #fff;    /* Fondo blanco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    border-radius: 10px;       /* Bordes redondeados */
+    z-index: 1000;             /* Asegura que esté por encima de otros elementos */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-header {
+    background-color: #007bff; /* Fondo azul para la cabecera */
+    color: white;              /* Texto blanco */
+    padding: 10px;
+    text-align: center;        /* Centrar el texto */
+    font-weight: bold;         /* Texto en negrita */
+  }
+  
+  .chat-history {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;          /* Scroll cuando el historial sea largo */
+    background-color: #f9f9f9; /* Fondo claro */
+  }
+  
+  .chat-options {
+    padding: 10px;
+    background-color: white;
+    border-top: 1px solid #ddd; /* Línea divisoria */
+  }
+  
+  .chat-options button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #007bff; /* Color azul en los botones */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .chat-options button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+  }
+  
+  .chat-end button {
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .chat-end button:hover {
+    background-color: #5a6268;
+  }
+  

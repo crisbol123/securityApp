@@ -10,11 +10,13 @@ import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.compo
 import { AdminComponent } from "./admin/admin.component";
 import { EliminarUsuariosComponent } from './eliminar-usuarios/eliminar-usuarios.component';
 import { Router } from '@angular/router'
+import { CommonModule } from '@angular/common';
+import { ChatComponent } from './chat/chat.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, MatCardModule, MatFormFieldModule, MatInputModule, EliminarUsuariosComponent ,MatButtonModule, RegistroDatosComponent, LoadingSpinnerComponent, AdminComponent],
+  imports: [RouterOutlet, ChatComponent, CommonModule, LoginComponent, MatCardModule, MatFormFieldModule, MatInputModule, EliminarUsuariosComponent ,MatButtonModule, RegistroDatosComponent, LoadingSpinnerComponent, AdminComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
