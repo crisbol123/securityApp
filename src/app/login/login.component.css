@@ -14,7 +14,7 @@
     margin-bottom: 20px;
   }
   
-  mat-card-actions {
+  mat-card-content {
     display: flex;
     justify-content: center;
   }
