@@ -6,7 +6,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Cédula</mat-label>
             <input matInput id="cedula" formControlName="cedula" type="text" />
-            <mat-error *ngIf="hasErrors('contrasena','required')">
+            <mat-error *ngIf="hasErrors('cedula','required')">
               Cédula es requerida.
             </mat-error>
             <mat-error *ngIf="hasErrors('cedula', 'pattern')">

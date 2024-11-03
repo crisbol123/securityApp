@@ -14,7 +14,7 @@ export class ChatComponent implements OnInit {
   currentStep: Step | null = null;  // Inicializamos como null para evitar el error
   stepHistory: Step [] = [];
   conversationHistory: { sender: string; message: string }[] = [];
-  isMinimized = false;
+  isMinimized = true;
 
   constructor(private chatService: ChatService) {}
 

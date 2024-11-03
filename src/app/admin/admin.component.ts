@@ -20,8 +20,14 @@ constructor(private router : Router){
   gestionar(){
     this.router.navigate(['/gestion-usuario']);
   }
+  gestionarPorterias(){
+    this.router.navigate(['/gestion-porterias']);
+  }
   regresar(){
     this.router.navigate(['/']);
+  }
+  reportes(){
+    this.router.navigate(['/app-accesos']);
   }
 }
 

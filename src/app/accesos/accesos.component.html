@@ -1,0 +1,33 @@
+<div class="accesos-container">
+    <h2>Selecciona una Portería</h2>
+  
+    <div class="porteria-buttons">
+      <button (click)="seleccionarPorteria(1)">Portería 1</button>
+      <button (click)="seleccionarPorteria(2)">Portería 2</button>
+    </div>
+  
+    <div class="tabla-elementos" *ngIf="selectedPorteria !== null">
+  
+      <table *ngIf="accesos.length > 0">
+        <thead>
+          <tr>
+            <th>Cédula</th>
+            <th>Portería</th>
+            <th>Fecha y Hora</th>
+            <th>Autenticado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acceso of accesos">
+            <td>{{ acceso.cedula }}</td>
+            <td>{{ acceso.porteria }}</td>
+            <td>{{ acceso.fecha_hora }}</td>
+            <td>{{ acceso.autenticado ? 'Sí' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <p *ngIf="accesos.length === 0">No hay accesos registrados para esta portería.</p>
+    </div>
+  </div>
+  

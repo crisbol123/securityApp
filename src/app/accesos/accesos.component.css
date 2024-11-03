@@ -1,0 +1,111 @@
+
+.tabla-elementos table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #968d8d;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 255, 255, 0.4); /* Sombra fosforescente */
+}
+
+.tabla-elementos th,
+.tabla-elementos td {
+  padding: 12px;
+  border: 1px solid #edeeef; /* Verde fosforescente */
+  color: #e8edf0;
+}
+
+.tabla-elementos th {
+  background-color:  #3d3c3c;
+  font-weight: bold;
+}
+
+.tabla-elementos tbody tr:nth-child(even) {
+  background-color: #5b5858; /* Fila alternada */
+}
+
+.tabla-elementos tbody tr:hover {
+  background-color: #444;
+  color: #fffd82; /* Amarillo brillante */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tabla-elementos p {
+  color: #ff4081; /* Mensaje fosforescente */
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.accesos-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  .porteria-buttons {
+    display: flex;
+    justify-content: center; /* Centramos los botones */
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px 0;
+    margin-left: 90px;
+  }
+  
+  .porteria-buttons button {
+    background: linear-gradient(135deg, rgb(74, 61, 255), rgb(255, 0, 0)); /* Degradado moderno */
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px; /* Ajustamos el padding */
+    border-radius: 8px; /* Esquinas menos redondeadas */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+  }
+  
+  .porteria-buttons button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Efecto al hacer hover */
+  }
+  
+  .porteria-buttons button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  
