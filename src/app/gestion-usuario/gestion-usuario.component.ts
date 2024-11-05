@@ -97,6 +97,10 @@ export class GestionUsuarioComponent implements OnInit {
 
   actualizarUsuario(): void {
     if (this.selectedUsuario && this.usuarioForm.valid) {
+      if(this.dataSource.data.find(u => u.cedula === this.usuarioForm.value.cedula && u.cedula !== this.selectedUsuario!.cedula)) {
+        this.snackBar.open('La cédula ya está en uso', 'Cerrar', { duration: 2000 });
+        return;
+      }
       const updatedUsuario = { ...this.selectedUsuario, ...this.usuarioForm.value };
       this.usuarioService.updateUsuario(updatedUsuario).subscribe(() => {
         const index = this.dataSource.data.findIndex(u => u.cedula === this.selectedUsuario!.cedula);
