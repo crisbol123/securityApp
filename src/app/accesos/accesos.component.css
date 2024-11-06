@@ -1,8 +1,15 @@
-
+.tabla-elementos {
+  max-height: 400px; /* Altura máxima del contenedor */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  margin-top: 20px;
+  border: 3px solid #f5f5f8; /* Borde del contenedor */
+  border-radius: 8px; /* Esquinas redondeadas del contenedor */
+  box-shadow: 0px 2px 5px rgba(6, 228, 17, 0.2); /* Sombra sutil para el contenedor */
+}
 .tabla-elementos table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 0px;
   background-color: #968d8d;
   border-radius: 8px;
   overflow: hidden;
@@ -44,7 +51,7 @@
     margin: 0 auto;
     padding: 20px;
   }
-  
+
   h2 {
     text-align: center;
     color: #ffffff;
@@ -63,7 +70,7 @@
     margin: 20px 0;
     margin-left: 90px;
   }
-  
+
   .porteria-buttons button {
     background: linear-gradient(135deg, rgb(74, 61, 255), rgb(255, 0, 0)); /* Degradado moderno */
     color: #ffffff;
@@ -76,36 +83,138 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
   }
-  
+
   .porteria-buttons button:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Efecto al hacer hover */
   }
-  
+
   .porteria-buttons button:active {
     transform: translateY(0);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
-  
+
   table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
   }
-  
+
   th, td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
-  
+
   th {
     background-color: #f2f2f2;
     color: #333;
   }
-  
+
   tr:hover {
     background-color: #f9f9f9;
   }
 
-  
+
+  .report-buttons {
+    display: flex;
+    justify-content: center; /* Centramos los botones */
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px 0;
+    margin-left: 90px;
+  }
+
+  .report-buttons button {
+    background: linear-gradient(135deg, rgb(74, 61, 255), rgb(50, 50, 50)); /* Degradado moderno */
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px; /* Ajustamos el padding */
+    border-radius: 8px; /* Esquinas menos redondeadas */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+  }
+
+  .report-buttons button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Efecto al hacer hover */
+  }
+
+  .report-buttons button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .report-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+/*Grafica*/
+  .chart-container {
+    position: relative;
+    max-width: 500;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #d40000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .chart-container select {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333333;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  .chart-container select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+  }
+
+  .chart-container canvas {
+    max-width: 100%; /* Asegura que el canvas no exceda el ancho del contenedor */
+    height: 400px; /* Altura del canvas */
+    margin-top: 1px; /* Espacio arriba de la gráfica */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco para el canvas */
+  }
+
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .kpis-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .kpi {
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+  .chart-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+
