@@ -7,10 +7,11 @@
   box-shadow: 0px 2px 5px rgba(6, 228, 17, 0.2); /* Sombra sutil para el contenedor */
 }
 .tabla-elementos table {
+  align-items: center;
   width: 100%;
   border-collapse: collapse;
   margin-top: 0px;
-  background-color: #968d8d;
+  background-color: hsl(0, 0%, 89%);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0px 4px 8px rgba(0, 255, 255, 0.4); /* Sombra fosforescente */
@@ -20,16 +21,17 @@
 .tabla-elementos td {
   padding: 12px;
   border: 1px solid #edeeef; /* Verde fosforescente */
-  color: #e8edf0;
+  color: #000000;
 }
 
 .tabla-elementos th {
-  background-color:  #3d3c3c;
+  color: white;
+  background: linear-gradient(135deg, rgb(74, 61, 255), rgb(136, 135, 135)); /* Degradado moderno */
   font-weight: bold;
 }
 
 .tabla-elementos tbody tr:nth-child(even) {
-  background-color: #5b5858; /* Fila alternada */
+  background-color: #c4c4c4; /* Fila alternada */
 }
 
 .tabla-elementos tbody tr:hover {
@@ -149,19 +151,53 @@
     transform: translateY(0);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
+
   .report-buttons button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
+  /* Botones de menú gráfico */
+  .grafica-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* Espacio entre botones */
+    padding: 5px 0;
+  }
+
+  .grafica-buttons button {
+    background: linear-gradient(135deg, #4a3dff, #a5a5a5); /* Degradado elegante */
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px; /* Espacio interno */
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+
+  .grafica-buttons button:hover {
+    transform: scale(1.05); /* Efecto al pasar el mouse */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Botón seleccionado */
+  .grafica-buttons .active {
+    background: linear-gradient(135deg, #fbfbff, #e4e4e4); /* Color destacado */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+    color: #ffffff;
+  }
 /*Grafica*/
   .chart-container {
+    display: none;
     position: relative;
-    max-width: 100%;
+    max-width: 600;
     margin: 20px auto;
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
-    border: 1px solid #d40000;
+    border: 1px solid #0f00db;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   }
 
@@ -234,6 +270,6 @@
   .kpi p {
     font-size: 18px;
     font-weight: bold;
-    color: #4CAF50; /* Color verde para los valores */
+    color: #4a3dff; /* Color verde para los valores */
     margin: 5px 0 0 0;
   }

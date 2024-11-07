@@ -80,13 +80,13 @@ export class AccesosComponent implements OnInit {
 
   // Generar reportes según el gráfico seleccionado
   generarReportes(): void {
+
     if (this.myChart) {
       this.myChart.destroy();
     }
     if (this.myChart2) {
       this.myChart2.destroy();
     }
-
     this.calcularKPIs(); // Calcular KPIs antes de generar el gráfico
 
     switch (this.graficoSeleccionado) {
@@ -100,7 +100,19 @@ export class AccesosComponent implements OnInit {
         // Mostrar el canvas principal y ocultar el circular
         document.getElementById('myChart2')!.style.display = 'none';
         document.getElementById('myChart')!.style.display = 'block';
+        // Enfocar grafico en pantalla
+        const chartContainer = document.getElementById("chart-container");
+        if (chartContainer) {
+          chartContainer.style.display = "block"; // Cambia a visible
+        }
         this.generarGraficoAccesosMensuales();
+        if (chartContainer) {
+          chartContainer.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        }
+
         break;
       case 'histogram':
         // Mostrar el canvas principal y ocultar el circular
@@ -120,7 +132,9 @@ export class AccesosComponent implements OnInit {
         document.getElementById('myChart')!.style.display = 'block';
         this.generarGraficoLineas();
         break;
-    }
+     }
+
+
   }
 
   // Actualizar el gráfico cuando cambie el mes seleccionado

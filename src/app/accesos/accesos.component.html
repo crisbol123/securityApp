@@ -25,13 +25,12 @@
       </tbody>
     </table>
     <p *ngIf="accesos.length === 0">No hay accesos registrados para esta portería.</p>
-  </div>
 
+  </div>
   <div class="report-buttons">
-    <button (click)="generarReportes()" [disabled]="accesos.length === 0">Generar reportes</button>
+    <button (click)="generarReportes()" [disabled]="accesos.length === 0">Ver estadísticas</button>
   </div>
-
-  <div class="chart-container">
+  <div id="chart-container" class="chart-container">
     <select [(ngModel)]="selectedMonth" (change)="onMonthChange()">
       <option value="">Todos los meses</option>
       <option value="Jan">Enero</option>
@@ -49,11 +48,13 @@
     </select>
 
     <!-- Botones opciones de grafico-->
-    <button (click)="obtenerTipo('first')">Principal</button>
-    <button (click)="obtenerTipo('bar')">Barras</button>
-    <button (click)="obtenerTipo('line')">Gráfico de Líneas</button>
-    <button (click)="obtenerTipo('pie')">Gráfico Circular</button>
-    <button (click)="obtenerTipo('histogram')">Histograma</button>
+    <div class="grafica-buttons">
+      <button (click)="obtenerTipo('first')">Accesos</button>
+      <button (click)="obtenerTipo('bar')">Porterias</button>
+      <button (click)="obtenerTipo('line')">Tendencias</button>
+      <button (click)="obtenerTipo('pie')">Porcentaje</button>
+      <button (click)="obtenerTipo('histogram')">Histograma</button>
+    </div>
 
     <canvas id="myChart" width="600" height="400" style="display:none;" *ngIf="accesos.length > 0"></canvas>
     <canvas id="myChart2" width="800" height="510" style="display:none;" *ngIf="accesos.length > 0"></canvas>
