@@ -6,7 +6,7 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  background-color: #968d8d;
+  background-color: hsl(0, 0%, 89%);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0px 4px 8px rgba(0, 255, 255, 0.4); /* Sombra fosforescente */
@@ -16,20 +16,22 @@
 .tabla-elementos td {
   padding: 12px;
   border: 1px solid #edeeef; /* Verde fosforescente */
-  color: #e8edf0;
+  color: #000000;
+
 }
 
 .tabla-elementos th {
-  background-color:  #3d3c3c;
+  color: white;
+  background: linear-gradient(135deg, rgb(74, 61, 255), rgb(136, 135, 135));
   font-weight: bold;
 }
 
 .tabla-elementos tbody tr:nth-child(even) {
-  background-color: #5b5858; /* Fila alternada */
+  background-color: #3f3f3f; /* Fila alternada */
 }
 
 .tabla-elementos tbody tr:hover {
-  background-color: #444;
+  background-color: #eeeeee;
   color: #fffd82; /* Amarillo brillante */
   transition: background-color 0.3s, color 0.3s;
 }
@@ -40,6 +42,7 @@
   font-weight: bold;
   text-align: center;
 }
+
 
 
 /* Estilos generales del mat-card */

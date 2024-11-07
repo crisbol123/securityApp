@@ -298,6 +298,7 @@ private generarHistogramaHoras(): void {
   }
   public getAllAccesos(): void {
     this.accesosService.getAllAccesos().subscribe((data) => {
+      this.selectedPorteria = 3;
       this.accesos = data;
     });
   }
