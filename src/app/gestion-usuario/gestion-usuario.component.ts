@@ -44,7 +44,7 @@ export class GestionUsuarioComponent implements OnInit {
   usuarioForm: FormGroup;
   selectedUsuario: Usuario | null = null;
   isLoading = false;
-  isCreating = true; 
+  isCreating = false; 
 
   page = 0;
   pageSize = 100;

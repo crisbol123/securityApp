@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.formSubmitted = true;
+  
     this.router.navigate(['/admin-interfaz']);
 
   }

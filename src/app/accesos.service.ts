@@ -18,4 +18,7 @@ export class AccesosService {
   obtenerAccesosPorPorteria(porteria: number): Observable<Acceso[]> {
     return this.http.get<Acceso[]>(`${this.apiUrl}?porteria=${porteria}`);
   }
+  getAllAccesos(): Observable<Acceso[]> {
+    return this.http.get<Acceso[]>('http://localhost:8081/accesos/all');
+  }
 }

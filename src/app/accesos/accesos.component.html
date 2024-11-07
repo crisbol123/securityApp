@@ -2,7 +2,8 @@
   <h2>Selecciona una Portería</h2>
   <div class="porteria-buttons">
     <button (click)="seleccionarPorteria(1)">Portería 1</button>
-    <button (click)="seleccionarPorteria(2)">Portería 2</button>
+    <button (click)="seleccionarPorteria(2)">Portería 2</button>`
+    <button (click)="getAllAccesos()">General</button>
   </div>
   <div class="tabla-elementos" *ngIf="selectedPorteria !== null">
     <table *ngIf="accesos.length > 0">

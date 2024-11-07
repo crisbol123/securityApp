@@ -282,6 +282,11 @@ private generarHistogramaHoras(): void {
     }
     return horas;
   }
+  public getAllAccesos(): void {
+    this.accesosService.getAllAccesos().subscribe((data) => {
+      this.accesos = data;
+    });
+  }
 
 }
 

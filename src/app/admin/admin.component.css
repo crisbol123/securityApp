@@ -4,8 +4,8 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, rgba(40, 24, 255, 0.612), #f71e1e);
-    color: white;
+    background: white;
+    color: #0911a2;
     font-family: 'Roboto', sans-serif;
     padding: 0; /* Eliminamos el espacio superior */
     box-sizing: border-box;
