@@ -44,11 +44,10 @@ export class GestionUsuarioComponent implements OnInit {
   usuarioForm: FormGroup;
   selectedUsuario: Usuario | null = null;
   isLoading = false;
+  isCreating = true; 
 
-  // Variables para la paginación
   page = 0;
   pageSize = 100;
-
   @ViewChild(CdkVirtualScrollViewport) viewport!: CdkVirtualScrollViewport;
 
   constructor(
@@ -111,16 +110,21 @@ export class GestionUsuarioComponent implements OnInit {
     }
   }
 
-  crearUsuario(
-  ): void {
+  crearUsuario(): void {
     if (this.usuarioForm.valid) {
+      this.isCreating = true; // Mostrar el GIF al comenzar
       const newUsuario = this.usuarioForm.value;
-      this.usuarioService.createUsuario(newUsuario).subscribe((usuario: Usuario) => {
-        this.dataSource.data = [newUsuario, ...this.dataSource.data];
-        this.dataSource._updateChangeSubscription();
-        this.snackBar.open('Usuario Creado', 'Cerrar', { duration: 2000 });
-      
-      });
+      this.usuarioService.createUsuario(newUsuario).subscribe(
+        (usuario: Usuario) => {
+          this.dataSource.data = [newUsuario, ...this.dataSource.data];
+          this.dataSource._updateChangeSubscription();
+          this.snackBar.open('Usuario Creado', 'Cerrar', { duration: 2000 });
+          this.isCreating = false; // Ocultar el GIF al finalizar
+        },
+        () => {
+          this.isCreating = false; // Ocultar el GIF en caso de error
+        }
+      );
     }
   }
 
@@ -128,6 +132,7 @@ export class GestionUsuarioComponent implements OnInit {
     this.selectedUsuario = null;
     this.usuarioForm.reset();
   }
+
   hasErrors(controlName: string, errorName: string): boolean {
     return this.usuarioForm.controls[controlName].hasError(errorName);
   }
