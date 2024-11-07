@@ -55,7 +55,7 @@
     <button (click)="obtenerTipo('histogram')">Histograma</button>
 
     <canvas id="myChart" width="600" height="400" style="display:none;" *ngIf="accesos.length > 0"></canvas>
-    <canvas id="myChart2" width="600" height="400" style="display:none;" *ngIf="accesos.length > 0"></canvas>
+    <canvas id="myChart2" width="800" height="510" style="display:none;" *ngIf="accesos.length > 0"></canvas>
 
     <div class="dashboard-container">
       <!-- KPIs -->
@@ -66,7 +66,7 @@
         </div>
         <div class="kpi">
           <h4>Porcentaje Autenticados</h4>
-          <p>{{ porcentajeAutenticados }}%</p>
+          <p>{{ porcentajeAutenticados | number: '1.2-2' }}%</p>
         </div>
         <div class="kpi">
           <h4>Día con más Accesos</h4>

@@ -156,7 +156,7 @@
 /*Grafica*/
   .chart-container {
     position: relative;
-    max-width: 500;
+    max-width: 100%;
     margin: 20px auto;
     padding: 10px;
     background-color: #f9f9f9;
@@ -194,27 +194,46 @@
   }
 
   .dashboard-container {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f4f4f4; /* Fondo suave para todo el contenedor */
+    border-radius: 8px; /* Bordes redondeados */
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .kpis-container {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adaptable a diferentes tamaños de pantalla */
+    gap: 5px; /* Espacio entre los KPI */
     width: 100%;
-    margin-bottom: 20px;
+    margin-top: 5px;
   }
 
   .kpi {
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 5px;
     text-align: center;
-    font-size: 1.2em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: box-shadow 0.3s ease;
   }
 
-  .chart-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    width: 100%;
+  .kpi:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Aumentar la sombra al pasar el mouse */
   }
 
+  .kpi h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #333; /* Color oscuro para el título */
+    font-style: bold;
+  }
+
+  .kpi p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4CAF50; /* Color verde para los valores */
+    margin: 5px 0 0 0;
+  }

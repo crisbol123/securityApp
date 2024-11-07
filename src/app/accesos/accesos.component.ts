@@ -27,6 +27,7 @@ export class AccesosComponent implements OnInit {
   selectedPorteria: number | null = null;
   selectedMonth: string = ''; // Almacena el mes seleccionado en formato abreviado
   private myChart: Chart | null = null;
+  private myChart2: Chart<'pie', number[], string> | null = null;
 
   // Variables para KPIs
   totalAccesos: number = 0;
@@ -81,6 +82,9 @@ export class AccesosComponent implements OnInit {
   generarReportes(): void {
     if (this.myChart) {
       this.myChart.destroy();
+    }
+    if (this.myChart2) {
+      this.myChart2.destroy();
     }
 
     this.calcularKPIs(); // Calcular KPIs antes de generar el gráfico
@@ -182,7 +186,7 @@ export class AccesosComponent implements OnInit {
     const noAutenticados = this.accesos.length - autenticados;
     const ctx = document.getElementById('myChart2') as HTMLCanvasElement;
     // Crear el gráfico circular con tamaño reducido
-    new Chart(ctx, {
+    this.myChart2 = new Chart(ctx, {
       type: 'pie',
       data: {
         labels: ['Autenticados', 'No Autenticados'],
@@ -192,7 +196,8 @@ export class AccesosComponent implements OnInit {
         }]
       },
       options: {
-        responsive:false
+        responsive:false,
+        maintainAspectRatio:false
        }
     });
   }
@@ -237,27 +242,45 @@ export class AccesosComponent implements OnInit {
   }
 
   // Histograma de accesos por hora
-  private generarHistogramaHoras(): void {
-    const accesosPorHora = this.accesos.reduce((acc, acceso) => {
-      const hora = this.extraerHora(acceso.fecha_hora); // Usamos la nueva función
-      acc[hora] = (acc[hora] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+// Histograma de accesos por hora (acumulado por hora completa)
+private generarHistogramaHoras(): void {
+  const etiquetasHoras = this.generarEtiquetasHoras();
+  const accesosPorHora = etiquetasHoras.reduce((acc, hora) => {
+    acc[hora] = 0; // Inicializamos el contador de accesos por cada hora
+    return acc;
+  }, {} as Record<string, number>);
 
-    const ctx = document.getElementById('myChart') as HTMLCanvasElement;
+  // Acumular accesos en la hora correspondiente
+  this.accesos.forEach(acceso => {
+    const hora = this.extraerHora(acceso.fecha_hora).split(':')[0];
+    const etiquetaHora = `${hora}:00:00`;
+    if (etiquetasHoras.includes(etiquetaHora)) {
+      accesosPorHora[etiquetaHora]++;
+    }
+  });
 
-    this.myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: Object.keys(accesosPorHora),
-        datasets: [{
-          label: 'Accesos por Hora',
-          data: Object.values(accesosPorHora),
-          backgroundColor: '#8BC34A'
-        }]
-      },
-      options: { responsive: true }
-    });
+  // Crear gráfico
+  const ctx = document.getElementById('myChart') as HTMLCanvasElement;
+  this.myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: etiquetasHoras,
+      datasets: [{
+        label: 'Accesos por Hora',
+        data: etiquetasHoras.map(hora => accesosPorHora[hora] || 0),
+        backgroundColor: '#8BC34A'
+      }]
+    },
+    options: { responsive: true }
+  });
+}
+  // Generar etiquetas de horas de 6:00 am a 23:00 pm
+  private generarEtiquetasHoras(): string[] {
+    const horas = [];
+    for (let i = 6; i <= 23; i++) {
+      horas.push(`${i}:00:00`);
+    }
+    return horas;
   }
 
 }
