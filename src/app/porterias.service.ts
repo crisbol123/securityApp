@@ -12,7 +12,7 @@ export interface Porteria {
   providedIn: 'root'
 })
 export class PorteriasService {
-  private apiUrl = 'http://localhost:8081/porterias'; 
+  private apiUrl = 'http://localhost:8081/porterias';
 
   constructor(private http: HttpClient) {}
 
