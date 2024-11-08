@@ -30,14 +30,15 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class GestionPorteriasComponent implements OnInit {
   porteriaForm: FormGroup;
-  displayedColumns: string[] = ['id', 'nombre'];
+  displayedColumns: string[] = ['id', 'nombre', 'mac'];
   dataSource = new MatTableDataSource<Porteria>();
   selectedPorteria: Porteria | null = null;
 
   constructor(private fb: FormBuilder, private porteriasService: PorteriasService) {
     this.porteriaForm = this.fb.group({
       id: [''],
-      nombre: ['']
+      nombre: [''],
+      mac: ['']
     });
   }
 
@@ -70,7 +71,7 @@ export class GestionPorteriasComponent implements OnInit {
       this.porteriasService.actualizarPorteria(porteriaActualizada).subscribe((porteria) => {
         const index = this.dataSource.data.findIndex(p => p.id === porteria.id);
         this.dataSource.data[index] = porteria;
-        this.dataSource._updateChangeSubscription(); // Para actualizar la tabla
+        this.dataSource._updateChangeSubscription();
         this.limpiarFormulario();
       });
     }

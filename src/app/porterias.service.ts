@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 export interface Porteria {
   id: number;
+  mac:String;
   nombre: string;
 }
 
