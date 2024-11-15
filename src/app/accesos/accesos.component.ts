@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Chart, registerables } from 'chart.js';
 import { FormsModule } from '@angular/forms';
 
+
 // Registrar componentes de Chart.js
 Chart.register(...registerables);
 
@@ -23,6 +24,9 @@ Chart.register(...registerables);
 })
 
 export class AccesosComponent implements OnInit {
+  selectedDate: string = '';
+  formattedDate: string = '';
+  showSelectors: boolean = false;  // Variable para controlar la visibilidad de los selectores
 
   accesos: Acceso[] = []; // Lista de accesos recopilados de la base de datos
   selectedPorteria: number | null = null; // Porteria seleccionada en la interfaz
@@ -83,7 +87,7 @@ export class AccesosComponent implements OnInit {
       this.myChart2.destroy();
     }
     this.calcularKPIs(); // Calcular KPIs antes de generar el gráfico
-
+    this.showSelectors = false; // Por defecto desaparecer calendar (solo para histograma)
     switch (this.graficoSeleccionado) {
       case 'bar':
         // Mostrar el canvas principal y ocultar el circular
@@ -212,6 +216,7 @@ export class AccesosComponent implements OnInit {
     var autenticados = this.accesos.filter(acceso => acceso.autenticado).length;
     var noAutenticados = this.accesos.length - autenticados;
     const ctx = document.getElementById('myChart2') as HTMLCanvasElement;
+    // Verificar si es esta filtrando por mes
     if(this.selectedMonth){
       const accesosFiltrados = this.accesos.filter(acceso => {
         return this.selectedMonth ? this.extraerMes(acceso.fecha_hora) === this.selectedMonth : true;
@@ -238,10 +243,19 @@ export class AccesosComponent implements OnInit {
 
   // Gráfico de barras para accesos por portería
   private generarGraficoBarras(): void {
-    const accesosPorPorteria = this.accesos.reduce((acc, acceso) => {
+    var accesosPorPorteria = this.accesos.reduce((acc, acceso) => {
       acc[acceso.porteria] = (acc[acceso.porteria] || 0) + 1;
       return acc;
     }, {} as Record<number, number>);
+    if(this.selectedMonth){
+      const accesosFiltrados = this.accesos.filter(acceso => {
+        return this.selectedMonth ? this.extraerMes(acceso.fecha_hora) === this.selectedMonth : true;
+      });
+        accesosPorPorteria = accesosFiltrados.reduce((acc, acceso) => {
+        acc[acceso.porteria] = (acc[acceso.porteria] || 0) + 1;
+        return acc;
+      }, {} as Record<number, number>);
+    }
 
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
 
@@ -257,12 +271,22 @@ export class AccesosComponent implements OnInit {
 
   // Gráfico de líneas para tendencia de accesos por día
   private generarGraficoLineas(): void {
-    const accesosPorDia = this.accesos.reduce((acc, acceso) => {
+    var accesosPorDia = this.accesos.reduce((acc, acceso) => {
       const dia = this.extraerDia(acceso.fecha_hora);
       acc[dia] = (acc[dia] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
-
+    // Verificar filtraje por mes
+    if(this.selectedMonth){
+      const accesosFiltrados = this.accesos.filter(acceso => {
+        return this.selectedMonth ? this.extraerMes(acceso.fecha_hora) === this.selectedMonth : true;
+      });
+      accesosPorDia = accesosFiltrados.reduce((acc, acceso) => {
+      const dia = this.extraerDia(acceso.fecha_hora);
+      acc[dia] = (acc[dia] || 0) + 1;
+      return acc;
+      }, {} as Record<string, number>);
+    }
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
 
     this.myChart = new Chart(ctx, {
@@ -277,14 +301,20 @@ export class AccesosComponent implements OnInit {
 
 // Histograma de accesos por hora (acumulado por hora completa)
 private generarHistogramaHoras(): void {
+  // Desactivar boton de mes, solo fecha calendar dia
+  this.showSelectors = true;
+
   const etiquetasHoras = this.generarEtiquetasHoras();
   const accesosPorHora = etiquetasHoras.reduce((acc, hora) => {
     acc[hora] = 0; // Inicializamos el contador de accesos por cada hora
     return acc;
   }, {} as Record<string, number>);
 
+  const accesosFiltrados = this.accesos.filter(acceso => {
+    return this.formattedDate ? this.extraerFecha(acceso.fecha_hora) === this.formattedDate : true;
+  });
   // Acumular accesos en la hora correspondiente
-  this.accesos.forEach(acceso => {
+  accesosFiltrados.forEach(acceso => {
     const hora = this.extraerHora(acceso.fecha_hora).split(':')[0];
     const etiquetaHora = `${hora}:00:00`;
     if (etiquetasHoras.includes(etiquetaHora)) {
@@ -331,6 +361,13 @@ private generarHistogramaHoras(): void {
   extraerHora(fecha: string): string {
     return fecha.split(' ')[3]; // Hora es el cuarto elemento
   }
+  extraerFecha(fecha: string): string {
+    const dia = this.extraerDia(fecha); // Obtener el día usando extraerDia
+    const mes = this.extraerMes(fecha); // Obtener el mes usando extraerMes
+    // Devolver la fecha en formato "DD MMM"
+    return `${dia} ${mes.toUpperCase()}`;
+  }
+
   // Segun el gráfico seleccionado, generar reportes y mostrar graficas
   // Cambiar el tipo de gráfico seleccionado y generar reporte
   obtenerTipo(tipo: string): void {
@@ -342,4 +379,14 @@ private generarHistogramaHoras(): void {
     this.generarReportes();
   }
 
+  onDateChange() {
+    if (this.selectedDate) {
+      const date = new Date(this.selectedDate);
+      const day = date.getDate();
+      const month = date.toLocaleString('default', { month: 'short' }).toUpperCase();
+      this.formattedDate = `${day < 10 ? '0' + day : day} ${month}`;
+
+      this.generarReportes();
+    }
+  }
 }

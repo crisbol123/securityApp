@@ -46,6 +46,10 @@
       <option value="Nov">Noviembre</option>
       <option value="Dec">Diciembre</option>
     </select>
+    <!-- Selector de fecha (input tipo date) -->
+    <div *ngIf="showSelectors">
+      <input type="date" id="fecha" name="fecha" [(ngModel)]="selectedDate" (change)="onDateChange()">
+    </div>
 
     <!-- Botones opciones de grafico-->
     <div class="grafica-buttons">

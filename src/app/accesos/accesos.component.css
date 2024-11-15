@@ -156,48 +156,6 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
-  /* Botones de menú gráfico */
-  .grafica-buttons {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px; /* Espacio entre botones */
-    padding: 5px 0;
-  }
-
-  .grafica-buttons button {
-    background: linear-gradient(135deg, #4a3dff, #a5a5a5); /* Degradado elegante */
-    color: #ffffff;
-    border: none;
-    padding: 10px 15px; /* Espacio interno */
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  }
-
-  .grafica-buttons button:hover {
-    transform: scale(1.05); /* Efecto al pasar el mouse */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-  }
-
-  /* Botón seleccionado */
-  .grafica-buttons .active {
-    background: linear-gradient(135deg, #fbfbff, #e4e4e4); /* Color destacado */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
-    color: #ffffff;
-  }
-  /*Botones deshabilitados*/
-  .grafica-buttons button:disabled {
-    opacity: 0.2;           /* Hacer el botón más opaco */
-    cursor: not-allowed;    /* Cambiar el cursor */
-    pointer-events: none;   /* Desactivar interacciones, incluyendo hover */
-  }
-
-  .grafica-buttons button:disabled:hover {
-    background-color: inherit; /* Mantener el color sin cambio en hover */
-  }
 
   /*Grafica*/
   .chart-container {
@@ -214,7 +172,7 @@
 
   .chart-container select {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 10px;
     padding: 5px 10px;
     font-size: 14px;
@@ -239,6 +197,48 @@
     border-radius: 5px; /* Bordes redondeados */
     background-color: #fff; /* Fondo blanco para el canvas */
   }
+    /* Botones de menú gráfico */
+    .grafica-buttons {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px; /* Espacio entre botones */
+      padding: 5px 0;
+    }
+
+    .grafica-buttons button {
+      background: linear-gradient(135deg, #4a3dff, #a5a5a5); /* Degradado elegante */
+      color: #ffffff;
+      border: none;
+      padding: 10px 15px; /* Espacio interno */
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    }
+
+    .grafica-buttons button:hover {
+      transform: scale(1.05); /* Efecto al pasar el mouse */
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Botón seleccionado */
+    .grafica-buttons .active {
+      background: linear-gradient(135deg, #fbfbff, #e4e4e4); /* Color destacado */
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+      color: #ffffff;
+    }
+    /*Botones deshabilitados*/
+    .grafica-buttons button:disabled {
+      opacity: 0.2;           /* Hacer el botón más opaco */
+      cursor: not-allowed;    /* Cambiar el cursor */
+      pointer-events: none;   /* Desactivar interacciones, incluyendo hover */
+    }
+
+    .grafica-buttons button:disabled:hover {
+      background-color: inherit; /* Mantener el color sin cambio en hover */
+    }
 
   .dashboard-container {
     width: 100%;
@@ -284,3 +284,18 @@
     color: #4a3dff; /* Color verde para los valores */
     margin: 5px 0 0 0;
   }
+
+  /* Estilo del input de fecha */
+  input[type="date"] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 125px;
+    margin: 5px 0;
+    cursor: pointer;
+  }
+
