@@ -188,7 +188,18 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
     color: #ffffff;
   }
-/*Grafica*/
+  /*Botones deshabilitados*/
+  .grafica-buttons button:disabled {
+    opacity: 0.2;           /* Hacer el botón más opaco */
+    cursor: not-allowed;    /* Cambiar el cursor */
+    pointer-events: none;   /* Desactivar interacciones, incluyendo hover */
+  }
+
+  .grafica-buttons button:disabled:hover {
+    background-color: inherit; /* Mantener el color sin cambio en hover */
+  }
+
+  /*Grafica*/
   .chart-container {
     display: none;
     position: relative;

@@ -2,8 +2,8 @@
   <h2>Selecciona una Portería</h2>
   <div class="porteria-buttons">
     <button (click)="seleccionarPorteria(1)">Portería 1</button>
-    <button (click)="seleccionarPorteria(2)">Portería 2</button>`
-    <button (click)="getAllAccesos()">General</button>
+    <button (click)="seleccionarPorteria(2)">Portería 2</button>
+    <button (click)="seleccionarPorteria(0)">General</button>
   </div>
   <div class="tabla-elementos" *ngIf="selectedPorteria !== null">
     <table *ngIf="accesos.length > 0">
@@ -49,12 +49,13 @@
 
     <!-- Botones opciones de grafico-->
     <div class="grafica-buttons">
-      <button (click)="obtenerTipo('first')">Accesos</button>
-      <button (click)="obtenerTipo('bar')">Porterias</button>
-      <button (click)="obtenerTipo('line')">Tendencias</button>
-      <button (click)="obtenerTipo('pie')">Porcentaje</button>
-      <button (click)="obtenerTipo('histogram')">Histograma</button>
+      <button #accesosBtn (click)="obtenerTipo('first')">Accesos</button>
+      <button #porteriasBtn (click)="obtenerTipo('bar')">Porterias</button>
+      <button #tendenciasBtn (click)="obtenerTipo('line')">Tendencias</button>
+      <button #porcentajeBtn (click)="obtenerTipo('pie')">Porcentaje</button>
+      <button #histogramaBtn (click)="obtenerTipo('histogram')">Histograma</button>
     </div>
+
 
     <canvas id="myChart" width="600" height="400" style="display:none;" *ngIf="accesos.length > 0"></canvas>
     <canvas id="myChart2" width="800" height="510" style="display:none;" *ngIf="accesos.length > 0"></canvas>
