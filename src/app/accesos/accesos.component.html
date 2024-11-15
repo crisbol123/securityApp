@@ -48,7 +48,7 @@
     </select>
     <!-- Selector de fecha (input tipo date) -->
     <div *ngIf="showSelectors">
-      <input type="date" id="fecha" name="fecha" [(ngModel)]="selectedDate" (change)="onDateChange()">
+      <input type="date" id="fecha" name="fecha" [(ngModel)]="selectedDate" (change)="generarReportes()">
     </div>
 
     <!-- Botones opciones de grafico-->

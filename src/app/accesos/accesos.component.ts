@@ -309,16 +309,26 @@ private generarHistogramaHoras(): void {
     acc[hora] = 0; // Inicializamos el contador de accesos por cada hora
     return acc;
   }, {} as Record<string, number>);
+  // Filtrar dia y mes
+  if (this.selectedDate) {
+    // Aquí estamos construyendo la fecha sin usar la zona horaria local
+    const date = new Date(this.selectedDate + 'T00:00:00');  // Forzamos la hora a las 00:00:00 para evitar problemas con la zona horaria
+    const day = String(date.getDate()).padStart(2, '0');  // Asegura el formato de dos dígitos para el día
+    let month = date.toLocaleString('en-US', { month: 'short' }); // Mes abreviado
+    // Convertir la primera letra a mayúscula y el resto a minúscula
+    month = month.charAt(0).toUpperCase() + month.slice(1).toLowerCase();
+    this.formattedDate = `${day} ${month}`;
+    }
 
   const accesosFiltrados = this.accesos.filter(acceso => {
     return this.formattedDate ? this.extraerFecha(acceso.fecha_hora) === this.formattedDate : true;
   });
-  // Acumular accesos en la hora correspondiente
+  // Acumular accesos por hora
   accesosFiltrados.forEach(acceso => {
-    const hora = this.extraerHora(acceso.fecha_hora).split(':')[0];
-    const etiquetaHora = `${hora}:00:00`;
-    if (etiquetasHoras.includes(etiquetaHora)) {
-      accesosPorHora[etiquetaHora]++;
+    const horaExtraida = this.extraerHora(acceso.fecha_hora); // Ejemplo: "04:23:15"
+    const hora = `${horaExtraida.split(':')[0].padStart(2, '0')}:00:00`; // Ejemplo: "04:00:00"
+    if (etiquetasHoras.includes(hora)) {
+      accesosPorHora[hora]++;
     }
   });
 
@@ -334,17 +344,22 @@ private generarHistogramaHoras(): void {
         backgroundColor: '#8BC34A'
       }]
     },
-    options: { responsive: true }
+    options: {
+      responsive: true,
+      scales: {
+        x: {
+           title: { display: true, text: 'Horas del Día' }
+          },
+        y: { title: { display: true, text: 'Cantidad de Accesos'}}
+      }
+    }
   });
 }
-  // Generar etiquetas de horas de 6:00 am a 23:00 pm
-  private generarEtiquetasHoras(): string[] {
-    const horas = [];
-    for (let i = 6; i <= 23; i++) {
-      horas.push(`${i}:00:00`);
-    }
-    return horas;
-  }
+// Generar etiquetas para las 24 horas del día
+private generarEtiquetasHoras(): string[] {
+  return Array.from({ length: 24 }, (_, i) => `${i.toString().padStart(2, '0')}:00:00`);
+}
+
 
 
   // Funciones utilizadas
@@ -359,14 +374,12 @@ private generarHistogramaHoras(): void {
   }
   // Extraer hora de la fecha
   extraerHora(fecha: string): string {
-    return fecha.split(' ')[3]; // Hora es el cuarto elemento
+    return fecha.split(' ')[3]; // Hora completa es el cuarto elemento
   }
   extraerFecha(fecha: string): string {
-    const dia = this.extraerDia(fecha); // Obtener el día usando extraerDia
-    const mes = this.extraerMes(fecha); // Obtener el mes usando extraerMes
-    // Devolver la fecha en formato "DD MMM"
-    return `${dia} ${mes.toUpperCase()}`;
+    return `${fecha.split(' ')[2]} ${fecha.split(' ')[1]}`; // Día y mes abreviado
   }
+
 
   // Segun el gráfico seleccionado, generar reportes y mostrar graficas
   // Cambiar el tipo de gráfico seleccionado y generar reporte
@@ -379,14 +392,7 @@ private generarHistogramaHoras(): void {
     this.generarReportes();
   }
 
-  onDateChange() {
-    if (this.selectedDate) {
-      const date = new Date(this.selectedDate);
-      const day = date.getDate();
-      const month = date.toLocaleString('default', { month: 'short' }).toUpperCase();
-      this.formattedDate = `${day < 10 ? '0' + day : day} ${month}`;
+  onDateChange(): void {
 
-      this.generarReportes();
-    }
   }
 }
