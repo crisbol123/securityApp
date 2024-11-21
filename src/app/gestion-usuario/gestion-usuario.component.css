@@ -2,6 +2,13 @@
   height: 300px; /* Ajusta esta altura según sea necesario */
   overflow: auto; /* Permite el desplazamiento */
 }
+.tabla-elementos {
+  max-height: 400px; /* Altura máxima del contenedor */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  margin-top: 0px;
+  border: 1px solid #000000; /* Borde del contenedor */
+  border-radius: 8px; /* Esquinas redondeadas del contenedor */
+}
 .tabla-elementos table {
   width: 100%;
   border-collapse: collapse;
@@ -9,7 +16,7 @@
   background-color: hsl(0, 0%, 89%);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0px 4px 8px rgba(0, 255, 255, 0.4); /* Sombra fosforescente */
+
 }
 
 .tabla-elementos th,
@@ -167,7 +174,7 @@ mat-card-content {
 }
 
 .gif-container {
-  width: 25%; 
+  width: 25%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -175,7 +182,7 @@ mat-card-content {
 }
 
 .gif-container img {
-  max-width: 130px; 
+  max-width: 130px;
   height: auto;
   padding-top: 40px;
 }
@@ -186,6 +193,6 @@ mat-form-field {
 .loading-text {
   font-size: 20px;
   color: #555;
-  margin-top: 4px; 
+  margin-top: 4px;
   text-align: center;
 }
