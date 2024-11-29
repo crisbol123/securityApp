@@ -28,12 +28,15 @@ export class LoginComponent implements OnInit {
       contrasena: ['', Validators.required]
     });
   }
-
   onSubmit(): void {
     this.formSubmitted = true;
-  
-    this.router.navigate(['/admin-interfaz']);
+    const { cedula, contrasena } = this.loginForm.value;
 
+    if (cedula === '1083812082' && contrasena === '123') {
+      this.router.navigate(['/admin-interfaz']);
+    } else {
+      this.loginError = true;
+    }
   }
 
   hasErrors(controlName: string, errorName: string): boolean {
