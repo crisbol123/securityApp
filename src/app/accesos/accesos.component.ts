@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { Chart, registerables } from 'chart.js';
 import { FormsModule } from '@angular/forms';
 
-
 // Registrar componentes de Chart.js
 Chart.register(...registerables);
 
